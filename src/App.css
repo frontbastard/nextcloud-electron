@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("assets/fonts/Ubuntu/Ubuntu-Medium.eot");
+  src: url("assets/fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"),
+  url("assets/fonts/Ubuntu/Ubuntu-Medium.svg#filename") format("svg");
+}
+
+#root {
+  font-family: CustomFont;
+}
+
+.box-shadow {
+  box-shadow: 0 15px 15px -5px #00000028;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("./assets/bg.png") no-repeat center center / cover;
+  opacity: 1;
+  transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+}
+
+.gogogo .container {
+  opacity: 0;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.loader svg {
+  animation: l1 1s infinite;
+}
+
+.gogogo .loader {
+  opacity: 1;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.input {
+  min-width: 350px;
+  padding: 8px 50px 8px 12px;
+  font-size: 1.2em;
+  background: #0000000f;
+  border-radius: 50px;
+  border: 1px solid #ffffff8a;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease-out;
+}
+
+.input:hover,
+.input:focus {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  min-width: 360px;
+  font-size: 1.25em;
+  border-color: #fff;
+}
+
+.input:hover + .button,
+.input:focus + .button {
+  color: #fff;
+}
+
+.input::placeholder {
+  color: #ffffff75;
+}
+
+.button {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  background: none;
+  padding: 0;
+  font-size: 20px;
+  color: #ffffff75;
+  border-radius: 0;
+  border: 0;
+  transition: all 0.3s ease-in;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.server-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.server-link a {
+  display: inline-block;
+  background: #ffffffe8;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #444;
+  outline: none;
+  transition: all 0.3s ease-in;
+}
+
+.server-link .edit-link {
+  background: #ffffffe8;
+  color: #444;
+  font-size: 1.2em;
+  padding: 15px;
+  margin: 0 0 0 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.server-link a:hover,
+.server-link .edit-link:hover {
+  background: #414d93;
+  color: #fff;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
