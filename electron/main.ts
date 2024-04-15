@@ -146,6 +146,7 @@ const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
 function createWindow() {
   win = new BrowserWindow({
     icon: path.join(__dirname, "assets/favicon.ico"),
+    autoHideMenuBar: true,
     width: 1200,
     height: 800,
     webPreferences: {

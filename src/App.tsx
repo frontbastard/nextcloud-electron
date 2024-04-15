@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { RiLoader3Fill } from "react-icons/ri";
 import "./App.css";
 
 function isValidHttpUrl(string: string) {
   let url;
+
+  if (!/^https?:\/\//i.test(string)) {
+    return false
+  }
 
   try {
     url = new URL(string);
@@ -16,6 +20,7 @@ function isValidHttpUrl(string: string) {
 }
 
 function App() {
+  const [isValid, setIsValid] = useState(true);
   const [url, setUrl] = useState("");
   const [server, setServer] = useState(
     window.electron.store.get("server") || ""
@@ -25,7 +30,8 @@ function App() {
     if (isValidHttpUrl(url)) {
       window.electron.store.set("server", url);
       setServer(url);
-      setUrl("");
+    } else {
+      setIsValid(false)
     }
   };
 
@@ -34,6 +40,7 @@ function App() {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setIsValid(true);
     if (e.key === "Enter") {
       addUrl();
     }
@@ -46,13 +53,14 @@ function App() {
 
   return (
     <>
+      <div className="logo">ACCOLADES</div>
       <div className="loader">
         <RiLoader3Fill />
       </div>
 
       <div className="container">
-        <div className="logo">ACCOLADES</div>
         <div className="input-wrapper box-shadow">
+          <span className={`error${!isValid ? " show" : ""}`}>http://, https:// ?</span>
           <input
             className="input"
             type="text"
