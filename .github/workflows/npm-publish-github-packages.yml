@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm run build -- -d --linux
+      - run: npm run build -d -- --linux
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Upload AppImage as artifact
