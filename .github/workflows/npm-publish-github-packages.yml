@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: AppImage
-          path: release/0.0.0/Accolades-Linux-0.0.0.AppImage
+          path: release/0.0.1/Accolades-Linux-0.0.1.AppImage
 
   publish-gpr:
     needs: build
@@ -53,6 +53,6 @@ jobs:
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
         with:
-          files: release/Accolades-Linux-0.0.0.AppImage
+          files: release/Accolades-Linux-0.0.1.AppImage
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
