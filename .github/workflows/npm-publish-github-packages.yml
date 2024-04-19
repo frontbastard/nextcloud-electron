@@ -17,6 +17,8 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run build -d -- --linux
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
 
   publish-gpr:
     needs: build
