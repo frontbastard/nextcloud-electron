@@ -19,6 +19,7 @@ jobs:
       - run: npm run build -d -- --linux
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-gpr:
     needs: build
