@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm build -d -- --linux
+      - run: npm run build -d -- --linux
 
   publish-gpr:
     needs: build
@@ -31,7 +31,7 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm build -d -- --linux
+      - run: npm run build -d -- --linux
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
