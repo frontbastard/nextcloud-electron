@@ -157,6 +157,47 @@ function createWindow() {
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {
     win?.webContents.send("main-process-message", new Date().toLocaleString());
+    // win?.webContents.executeJavaScript(`
+    // const iframe = document.getElementById('riot-iframe')
+
+    // if (iframe) {
+    //   const interval = setInterval(() => {
+    //     const titles = iframe.contentWindow.document.querySelector(".mx_RoomSublist_tiles")
+    //     const actions = iframe.contentWindow.document.querySelector(".mx_MessageComposer_actions")
+
+    //     if (titles) {
+    //       setupClickHandler(iframe, titles)
+    //       clearTimeout(interval)
+    //     }
+
+    //     if (actions) {
+    //       addButton(iframe.contentWindow.document)
+    //     }
+    //   }, 1000)
+    // }
+
+    // function setupClickHandler(iframe, titles) {
+    //   const iframeDocument = iframe.contentWindow.document
+    //   titles.addEventListener('click', function(event) {
+    //     const roomTile = event.target.closest('.mx_RoomTile')
+
+    //     if (roomTile) {
+    //       addButton(iframeDocument)
+    //     }
+    //   })
+    // }
+
+    // function addButton(iframeDocument) {
+    //   const interval = setInterval(() => {
+    //     const button = iframeDocument.querySelector(".mx_MessageComposer_upload")
+
+    //     if (button) {
+    //       button.insertAdjacentHTML('afterend', '<a href="/nextcloud/apps/picker/single-link" target="_blank" style="margin-left: 10px;">Visit Example</a>')
+    //       clearTimeout(interval)
+    //     }
+    //   }, 100)
+    // }
+    // `);
   });
 
   if (VITE_DEV_SERVER_URL) {

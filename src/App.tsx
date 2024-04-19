@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { RiLoader3Fill } from "react-icons/ri";
 import "./App.css";

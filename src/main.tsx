@@ -13,9 +13,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 window.ipcRenderer.on('main-process-message', (_event, message) => {
   console.log(message)
 })
-
-const webView = document.createElement("webview");
-
-webView.addEventListener("new-window", (e: any) => {
-  webView.loadURL(e.url);
-});
