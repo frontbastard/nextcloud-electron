@@ -16,9 +16,14 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm run build -d -- --linux
+      - run: npm run build -- -d --linux
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Upload AppImage as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: AppImage
+          path: release/0.0.0/Accolades-Linux-0.0.0.AppImage
 
   publish-gpr:
     needs: build
@@ -28,11 +33,26 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
         with:
-          node-version: 18
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          name: AppImage
+          path: release
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/Accolades-Linux-0.0.0.AppImage
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
