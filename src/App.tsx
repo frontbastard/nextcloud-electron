@@ -36,7 +36,7 @@ function App() {
   };
 
   const addClassToBody = () => {
-    document.body.classList.add("gogogo");
+    document.body.classList.add("gogogo"); 
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
