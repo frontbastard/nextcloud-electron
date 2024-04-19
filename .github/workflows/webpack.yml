@@ -27,3 +27,6 @@ jobs:
         npm install
         npm install -D webpack-cli
         npm run build -d -- --linux
+
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
